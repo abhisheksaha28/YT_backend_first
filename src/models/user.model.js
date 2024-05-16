@@ -88,7 +88,8 @@ userSchema.pre( "save" , async function (next) {
     //1. jokhon oi ekta pass word nemu, uida re enccrypt koira save korum
     //this.password=bcrypt.hash(this.password,no._of_rounds)
     //bcrypt algorithm diya hash korum password re, no. of rounds mane koybar ami aida re salting korum
-    this.password = bcrypt.hash(this.password,10)
+    //this may be time consuming, r jotokho ida complete na hoitse ami age move kortam na..., so use await
+    this.password = await bcrypt.hash(this.password,10)
     //now move to next
     next()
 })

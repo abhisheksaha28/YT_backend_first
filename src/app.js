@@ -31,4 +31,29 @@ app.use(cookieParser())
 
 /***********  CONFIGURTION OF REQUIRED THINGS DONE  ************/
 
+
+
+/**************** SETUP THE ROUTES ******************/
+  
+
+//********* Task-1 => Import Routes first
+
+import userRouter from './routes/user.routes.js';
+
+
+//********* Task-2 => Declare the Routes
+
+//normally amra app.get() oi use kori,karon tokhon aamra same file aa oi route o lekhtaslam r same file a oi controller o lekhtaslam, but aidike korte partam na karon route r ontroller sob alada alada folder a
+//aidike amrar aagee middleware use korte hoibo routes ti re call koroner liga, erliga app.use() kkortre lagbo
+//app.use(path,router_name).....app.use( jakhusi_path_lekho-----sob_use_koron_ jaibo)
+
+app.use( "/user",userRouter) //jokhon oi keu /user pat tat jaibo, userRouter ta activatte hoia jaibo, toh user.controller.js a giya ai userRouter er kaaj ta lekho
+
+
+
+
+
+
+
+
 export { app }; //export default app;...both are same thing,just 2 ways to write

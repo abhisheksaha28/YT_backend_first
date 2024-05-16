@@ -1,8 +1,9 @@
-//ekta function banamu r aidda re export korum
+//ekta aynchronous request handler function banamu r aidda re export korum sob page a jeidike oi async req function dorkar lgbo
+//basically ida o ekta middlewre hisabe oi kaaj korbo
 //***** LET'S WRITE THE CODE IN PROMISES */
 
 const asyncHandler =(requestHandler)=>{
-    (req,res,next) => {
+    return (req,res,next) => {
         Promise.resolve(requestHandler(req,res,next)).
         catch( (err) => next(err))
     }
