@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { registerUser } from "../controllers/user.controller.js";
+import { loginUser, logoutUser, registerUser } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 
 const router = Router()
@@ -23,6 +24,16 @@ router.route("/register").post(
     ]),
     registerUser
     )
+
+
+
+//router for login
+router.route("/login").post(loginUser)   
+
+//now i have to give some routes for middlewsres, that will work only when the user is loggedin
+//secured routes
+//before running logout middleware, verification is to be done
+router.route("/logout").post(verifyJWT,logoutUser)
 
 
 

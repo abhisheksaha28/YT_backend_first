@@ -97,6 +97,7 @@ userSchema.pre( "save" , async function (next) {
 //****STEP-2 > CHECK PASSWORD */
 userSchema.method.isPasswordCorrect = async function (password){
     return await bcrypt.compare(password, this.password)
+    //password will be the input from user during login and thiss.password is the saved hashed passowrd inn db, so comparison between then will be done
 }
 
 //****STEP-3 > TOKEN GENERATION */

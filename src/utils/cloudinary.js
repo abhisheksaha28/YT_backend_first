@@ -1,5 +1,5 @@
 import {v2 as cloudinary} from 'cloudinary';
-import { response } from 'express';
+//import { response } from 'express';
 import fs from "fs";
 
  
@@ -20,13 +20,18 @@ const uploadOnCloudinary = async (localFilePath) => {
         
         //upload the file in cloudinary
         //uplaod korte time toh laagte oi pare, eerliga amra await use korum
-        const response = cloudinary.uploader.upload(localFilePath, {
+        const response = await cloudinary.uploader.upload(localFilePath, {
           resource_type : "auto"  //it can be video,img, file, etc etc
           //ifn we have some specified things only, then we can specify, like img, video,etc
  
         })
-        //fie upload jokho succesful hoibo, amra console og korum, loge loge, resonse er url d o dia demu
-        console.log("File is uploaded successfully on Cloudinary" , response.url);
+        //fie upload jokho succesful hoibo, amra console log korum, loge loge, resonse er url d o dia demu
+        //*=>console.log("File is uploaded successfully on Cloudinary" , response.url);
+
+        //jodi upload hoia jay, uporer console log ta doekar nai, just checking er liga raksilam
+        //aibar jehtu sob thik thk kaaj  kortase, aibar amra delete koira demu media files ti re amrar local storage thika
+        //synchronously unlink korum, karon unlink houner pore oi amra age forward homu
+        fs.unlinkSync(localFilePath);
 
         return response;
 

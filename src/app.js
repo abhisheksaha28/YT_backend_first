@@ -15,7 +15,7 @@ app.use( cors({
 }))
 
 //jei data da aami nitasi uida re configure koroner liga
-app.use(express.json({limit: "20kb"}));
+app.use(express.json({limit: "100kb"}));
 
 //aibar amar je URL uida re o configure korte hoiobo
 app.use(express.urlencoded({extended:true}))
